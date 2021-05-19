@@ -94,9 +94,11 @@ namespace Business.Concrete
         }
 
         [TransactionScopeAspect]
-        public IResult AddTransactionalTest(Product product)
+        public IResult AddTransactionTest(Product product)
         {
-            throw new NotImplementedException();
+            _productDal.Update(product);
+            _productDal.Add(product);
+            return new SuccessResult("Ürün güncellendi");
         }
 
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
