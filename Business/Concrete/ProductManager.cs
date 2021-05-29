@@ -27,7 +27,7 @@ namespace Business.Concrete
             _categoryService = categoryService;
         }
 
-        [SecuredOperation("product.add,admin")]
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
@@ -48,7 +48,7 @@ namespace Business.Concrete
         [PerformanceAspect(1)]
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 21)
+            if (DateTime.Now.Hour == 7)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
